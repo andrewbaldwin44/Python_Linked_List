@@ -30,6 +30,24 @@ class LinkedList:
 
         return self
 
+    def pop(self):
+        if self.head:
+            previous_node = None
+            current_node = self.head
+
+            while current_node.next_node:
+                previous_node = current_node
+                current_node = current_node.next_node
+
+            if previous_node:
+                previous_node.next_node = None
+                self.tail = previous_node
+            else:
+                self.head = None
+                self.tail = None
+
+            return current_node
+
     def to_array(self):
         output = []
 

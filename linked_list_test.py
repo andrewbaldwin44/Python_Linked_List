@@ -79,6 +79,13 @@ class SimpleLinkedListTest(unittest.TestCase):
 
         self.assertEqual(list.to_array(), ['hello', [1, 2, 3], 5])
 
+    def test_pop_list(self):
+        list = LinkedList()
+
+        list.push(5).push(10).push(20)
+
+        self.assertEqual(list.pop().value, 20)
+
 
     # Utility functions
     def assertRaisesWithMessage(self, exception):
