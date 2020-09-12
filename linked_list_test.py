@@ -35,6 +35,16 @@ class SimpleLinkedListTest(unittest.TestCase):
 
         self.assertEqual(list.to_array(), [50, 1, 20, [1, 2, 3], 'hello'])
 
+    def test_push_existing_elements_to_list(self):
+        list = LinkedList()
+
+        first_element = Element([1, 2, 3])
+        second_element = Element('cool')
+
+        list.push(first_element).push(second_element)
+
+        self.assertEqual(list.to_array(), [[1, 2, 3], 'cool'])
+
     def convert_list_to_string(self):
         list = LinkedList()
         list.push(20).push(10).push([1, 2, 3])

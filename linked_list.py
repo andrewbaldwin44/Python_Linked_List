@@ -3,8 +3,11 @@ class LinkedList:
         self.head = None
         self.tail = None
 
+    def create_element(self, value):
+        return value if isinstance(value, Element) else Element(value)
+
     def push(self, value):
-        new_element = Element(value)
+        new_element = self.create_element(value)
 
         if not self.head:
             self.head = new_element
