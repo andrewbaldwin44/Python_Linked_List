@@ -45,6 +45,20 @@ class SimpleLinkedListTest(unittest.TestCase):
 
         self.assertEqual(list.to_array(), [[1, 2, 3], 'cool'])
 
+    def test_populated_list_has_head(self):
+        list = LinkedList()
+
+        list.push(5)
+
+        self.assertEqual(list.head.value, 5)
+
+    def test_populated_list_has_tail(self):
+        list = LinkedList()
+
+        list.push(5).push(10)
+
+        self.assertEqual(list.tail.value, 10)
+
     def convert_list_to_string(self):
         list = LinkedList()
         list.push(20).push(10).push([1, 2, 3])
