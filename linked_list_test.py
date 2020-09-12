@@ -65,6 +65,20 @@ class SimpleLinkedListTest(unittest.TestCase):
 
         self.assertEqual(str(list), '( 20 ) -> ( 10 ) -> ( [1, 2, 3] ) -> ')
 
+    def test_shift_list(self):
+        list = LinkedList()
+
+        list.shift(5)
+
+        self.assertEqual(list.head.value, 5)
+
+    def test_shift_multiple_elements(self):
+        list = LinkedList()
+
+        list.shift(5).shift([1, 2, 3]).shift('hello')
+
+        self.assertEqual(list.to_array(), ['hello', [1, 2, 3], 5])
+
 
     # Utility functions
     def assertRaisesWithMessage(self, exception):

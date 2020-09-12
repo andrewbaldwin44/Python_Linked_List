@@ -22,6 +22,14 @@ class LinkedList:
 
         return self
 
+    def shift(self, value):
+        new_element = self.create_element(value)
+
+        new_element.next_node = self.head
+        self.head = new_element
+
+        return self
+
     def to_array(self):
         output = []
 
