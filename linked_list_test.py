@@ -1,0 +1,51 @@
+import unittest
+
+from linked_list import LinkedList, Element
+
+class LinkedListElementTest(unittest.TestCase):
+    def test_element_holds_value(self):
+        new_element = Element(20)
+        self.assertEqual(new_element.value, 20)
+
+    def test_element_holds_next_element(self):
+        first_element = Element(1)
+        second_element = Element('some string')
+
+        first_element.next_node = second_element
+        self.assertEqual(first_element.next_node.value, second_element.value)
+
+class SimpleLinkedListTest(unittest.TestCase):
+    def test_empty_list_has_no_head(self):
+        list = LinkedList()
+        self.assertIs(list.head, None)
+
+    def test_empty_list_has_no_tail(self):
+        list = LinkedList()
+        self.assertIs(list.tail, None)
+
+    def test_push_element_to_list(self):
+        list = LinkedList()
+        list.push(50)
+
+        self.assertEqual(list.to_array(), [50])
+
+    def test_push_multiple_elements_to_list(self):
+        list = LinkedList()
+        list.push(50).push(1).push(20).push([1, 2, 3]).push('hello')
+
+        self.assertEqual(list.to_array(), [50, 1, 20, [1, 2, 3], 'hello'])
+
+    def convert_list_to_string(self):
+        list = LinkedList()
+        list.push(20).push(10).push([1, 2, 3])
+
+        self.assertEqual(str(list), '( 20 ) -> ( 10 ) -> ( [1, 2, 3] ) -> ')
+
+
+    # Utility functions
+    def assertRaisesWithMessage(self, exception):
+        return self.assertRaisesRegex(exception, r".+")
+
+
+if __name__ == '__main__':
+    unittest.main()
