@@ -65,17 +65,17 @@ class SimpleLinkedListTest(unittest.TestCase):
 
         self.assertEqual(str(list), '( 20 ) -> ( 10 ) -> ( [1, 2, 3] ) -> ')
 
-    def test_shift_list(self):
+    def test_unshift_list(self):
         list = LinkedList()
 
-        list.shift(5)
+        list.unshift(5)
 
         self.assertEqual(list.head.value, 5)
 
-    def test_shift_multiple_elements(self):
+    def test_unshift_multiple_elements(self):
         list = LinkedList()
 
-        list.shift(5).shift([1, 2, 3]).shift('hello')
+        list.unshift(5).unshift([1, 2, 3]).unshift('hello')
 
         self.assertEqual(list.to_array(), ['hello', [1, 2, 3], 5])
 
@@ -85,6 +85,13 @@ class SimpleLinkedListTest(unittest.TestCase):
         list.push(5).push(10).push(20)
 
         self.assertEqual(list.pop().value, 20)
+
+    def test_shift_list(self):
+        list = LinkedList()
+
+        list.push(5).push(10).push(20)
+
+        self.assertEqual(list.shift().value, 5)
 
 
     # Utility functions
