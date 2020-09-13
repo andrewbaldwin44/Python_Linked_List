@@ -144,6 +144,20 @@ class SimpleLinkedListTest(unittest.TestCase):
 
         self.assertEqual(list.at(-3).value, 10)
 
+    def test_get_element_at_invalid_index(self):
+        list = LinkedList()
+
+        list.push(5).push(10).push(20).push(50)
+
+        self.assertIs(list.at(10), None)
+
+    def test_get_element_at_invalid_negative_index(self):
+        list = LinkedList()
+
+        list.push(5).push(10).push(20).push(50)
+
+        self.assertIs(list.at(-10), None)
+
     def test_finding_element_index(self):
         list = LinkedList()
 
