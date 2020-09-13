@@ -2,6 +2,7 @@ class LinkedList:
     def __init__(self):
         self.head = None
         self.tail = None
+        self.size = 0
 
     def create_element(self, value):
         return value if isinstance(value, Element) else Element(value)
@@ -24,6 +25,8 @@ class LinkedList:
             current_tail.next_node = new_element
             self.tail = new_element
 
+        self.size += 1
+
         return self
 
     def unshift(self, value):
@@ -31,6 +34,8 @@ class LinkedList:
 
         new_element.next_node = self.head
         self.head = new_element
+
+        self.size += 1
 
         return self
 
@@ -49,6 +54,8 @@ class LinkedList:
             else:
                 self.empty_list()
 
+            self.size -= 1
+
             return current_node
 
     def shift(self):
@@ -60,7 +67,12 @@ class LinkedList:
             else:
                 self.empty_list()
 
+            self.size -= 1
+
             return current_node
+
+    def __len__(self):
+        return self.size
 
     def to_array(self):
         output = []

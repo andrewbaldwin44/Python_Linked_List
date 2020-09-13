@@ -59,6 +59,13 @@ class SimpleLinkedListTest(unittest.TestCase):
 
         self.assertEqual(list.tail.value, 10)
 
+    def test_populated_list_has_size(self):
+        list = LinkedList()
+
+        list.push(5).push(10).push(20)
+
+        self.assertEqual(len(list), 3)
+
     def convert_list_to_string(self):
         list = LinkedList()
         list.push(20).push(10).push([1, 2, 3])
