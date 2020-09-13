@@ -186,9 +186,45 @@ class SimpleLinkedListTest(unittest.TestCase):
 
         self.assertIs(list.is_containing(4), False)
 
-    # Utility functions
-    def assertRaisesWithMessage(self, exception):
-        return self.assertRaisesRegex(exception, r".+")
+    def test_insert_element_at_index(self):
+        list = LinkedList()
+
+        list.push(5).push(10).push(20)
+        list.insert_at('cool', 1)
+
+        self.assertEqual(list.to_array(), [5, 'cool', 10, 20])
+
+    def test_insert_element_at_first_index(self):
+        list = LinkedList()
+
+        list.push(5).push(10).push(20)
+        list.insert_at('cool', 0)
+
+        self.assertEqual(list.to_array(), ['cool', 5, 10, 20])
+
+    def test_insert_element_at_last_index(self):
+        list = LinkedList()
+
+        list.push(5).push(10).push(20)
+        list.insert_at('cool', -1)
+
+        self.assertEqual(list.to_array(), [5, 10, 20, 'cool'])
+
+    def test_insert_element_at_non_existing_index(self):
+        list = LinkedList()
+
+        list.push(5).push(10).push(20)
+        list.insert_at('cool', 10)
+
+        self.assertEqual(list.to_array(), [5, 10, 20])
+
+    def test_insert_element_at_negative_index(self):
+        list = LinkedList()
+
+        list.push(5).push(10).push(20)
+        list.insert_at('cool', -2)
+
+        self.assertEqual(list.to_array(), [5, 10, 'cool', 20])
 
 
 if __name__ == '__main__':

@@ -15,7 +15,7 @@ class LinkedList:
         if index < 0:
             index = self.size - abs(index)
 
-        return index if self.size > index and index >= 0 else None
+        return index if self.size >= index and index >= 0 else None
 
     def push(self, value):
         new_element = self.create_element(value)
@@ -104,6 +104,33 @@ class LinkedList:
 
     def is_containing(self, value):
         return True if self.find(value) is not None else False
+
+    def insert_at(self, value, index):
+        valid_index = self.valid(index)
+
+        print(index)
+
+        if valid_index is None:
+            return None
+        elif valid_index == 0:
+            return self.unshift(value)
+        elif valid_index == self.size - 1:
+            return self.push(value)
+        else:
+            new_element = self.create_element(value)
+
+            if (index > 0):
+                valid_index -= 1
+
+            previous_node = self.at(valid_index)
+            current_node = previous_node.next_node
+
+            previous_node.next_node = new_element
+            new_element.next_node = current_node
+
+            self.size += 1
+
+            return self
 
     def to_array(self):
         output = []
