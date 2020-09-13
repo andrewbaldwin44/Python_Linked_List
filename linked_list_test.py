@@ -172,6 +172,20 @@ class SimpleLinkedListTest(unittest.TestCase):
 
         self.assertIs(list.find(4), None)
 
+    def test_is_element_in_list(self):
+        list = LinkedList()
+
+        list.push(5).push(10).push(20)
+
+        self.assertIs(list.is_containing(5), True)
+
+    def test_is_element_not_in_list(self):
+        list = LinkedList()
+
+        list.push(5).push(10).push(20)
+
+        self.assertIs(list.is_containing(4), False)
+
     # Utility functions
     def assertRaisesWithMessage(self, exception):
         return self.assertRaisesRegex(exception, r".+")

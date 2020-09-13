@@ -102,6 +102,9 @@ class LinkedList:
                 current_node = current_node.next_node
                 current_index += 1
 
+    def is_containing(self, value):
+        return True if self.find(value) is not None else False
+
     def to_array(self):
         output = []
 
