@@ -137,7 +137,26 @@ class SimpleLinkedListTest(unittest.TestCase):
 
         self.assertEqual(list.at(-3).value, 10)
 
+    def test_get_element_at_negative_index(self):
+        list = LinkedList()
 
+        list.push(5).push(10).push(20).push(50)
+
+        self.assertEqual(list.at(-3).value, 10)
+
+    def test_finding_element_index(self):
+        list = LinkedList()
+
+        list.push(5).push(10).push(20).push(50)
+
+        self.assertEqual(list.find(5), 0)
+
+    def test_finding_non_existant_element(self):
+        list = LinkedList()
+
+        list.push(5).push(10).push(20).push(50)
+
+        self.assertIs(list.find(4), None)
 
     # Utility functions
     def assertRaisesWithMessage(self, exception):

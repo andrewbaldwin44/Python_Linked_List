@@ -90,8 +90,17 @@ class LinkedList:
 
             return current_node
 
-    def __len__(self):
-        return self.size
+    def find(self, value):
+        if self.head:
+            current_node = self.head
+            current_index = 0
+
+            while current_node:
+                if current_node.value == value:
+                    return current_index
+
+                current_node = current_node.next_node
+                current_index += 1
 
     def to_array(self):
         output = []
@@ -104,6 +113,9 @@ class LinkedList:
                 current_node = current_node.next_node
 
         return output
+
+    def __len__(self):
+        return self.size
 
     def __str__(self):
         output = ""
