@@ -151,6 +151,23 @@ class LinkedList:
 
         return self
 
+    def reverse(self):
+        if self.head:
+            previous_node = None
+            current_node = self.head
+            next_node = None
+
+            while current_node:
+                next_node = current_node.next_node
+                current_node.next_node = previous_node
+
+                previous_node = current_node
+                current_node = next_node
+
+            self.head = previous_node
+
+            return self
+
     def to_array(self):
         output = []
 

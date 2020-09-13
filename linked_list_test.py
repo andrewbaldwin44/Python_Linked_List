@@ -274,5 +274,12 @@ class SimpleLinkedListTest(unittest.TestCase):
 
         self.assertEqual(list.to_array(), [10, 40])
 
+    def test_reverse_list(self):
+        list = LinkedList()
+
+        list.push(5).push(10).push(20).push(40).push([55, 66, 77])
+
+        self.assertEqual(list.reverse().to_array(), [[55, 66, 77], 40, 20, 10, 5])
+
 if __name__ == '__main__':
     unittest.main()
