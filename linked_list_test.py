@@ -100,6 +100,15 @@ class SimpleLinkedListTest(unittest.TestCase):
 
         self.assertEqual(list.shift().value, 5)
 
+    def test_list_len_with_push_pop_unshift_and_shift(self):
+        list = LinkedList()
+
+        list.push(5).push(10).push(20).push(50).unshift(44)
+        list.pop()
+        list.shift()
+
+        self.assertEqual(len(list), 3)
+
 
     # Utility functions
     def assertRaisesWithMessage(self, exception):
