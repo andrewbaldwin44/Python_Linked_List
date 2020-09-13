@@ -109,6 +109,35 @@ class SimpleLinkedListTest(unittest.TestCase):
 
         self.assertEqual(len(list), 3)
 
+    def test_get_element_at_index(self):
+        list = LinkedList()
+
+        list.push(5).push(10).push(20).push(50)
+
+        self.assertEqual(list.at(2).value, 20)
+
+    def test_get_element_at_first_index(self):
+        list = LinkedList()
+
+        list.push(5).push(10).push(20).push(50)
+
+        self.assertEqual(list.at(0).value, 5)
+
+    def test_get_element_at_last_index(self):
+        list = LinkedList()
+
+        list.push(5).push(10).push(20).push(50)
+
+        self.assertEqual(list.at(-1).value, 50)
+
+    def test_get_element_at_negative_index(self):
+        list = LinkedList()
+
+        list.push(5).push(10).push(20).push(50)
+
+        self.assertEqual(list.at(-3).value, 10)
+
+
 
     # Utility functions
     def assertRaisesWithMessage(self, exception):

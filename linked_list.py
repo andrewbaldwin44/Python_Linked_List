@@ -11,6 +11,12 @@ class LinkedList:
         self.head = None
         self.tail = None
 
+    def valid(self, index):
+        if index < 0:
+            index = self.size - abs(index)
+
+        return index if self.size > index and index >= 0 else None
+
     def push(self, value):
         new_element = self.create_element(value)
 
@@ -68,6 +74,19 @@ class LinkedList:
                 self.empty_list()
 
             self.size -= 1
+
+            return current_node
+
+    def at(self, index):
+        index = self.valid(index)
+
+        if self.head and index is not None:
+            current_index = 0
+            current_node = self.head
+
+            while current_index != index:
+                current_index += 1
+                current_node = current_node.next_node
 
             return current_node
 
