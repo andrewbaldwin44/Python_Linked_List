@@ -108,8 +108,6 @@ class LinkedList:
     def insert_at(self, value, index):
         valid_index = self.valid(index)
 
-        print(index)
-
         if valid_index is None:
             return None
         elif valid_index == 0:
@@ -130,7 +128,28 @@ class LinkedList:
 
             self.size += 1
 
-            return self
+        return self
+
+    def remove_at(self, index):
+        valid_index = self.valid(index)
+
+        if valid_index is None:
+            return None
+        elif valid_index == 0:
+            self.shift()
+        elif valid_index == self.size - 1:
+            self.pop()
+        else:
+            valid_index -= 1
+
+            previous_node = self.at(valid_index)
+            current_node = previous_node.next_node
+
+            previous_node.next_node = current_node.next_node
+
+            self.size -= 1
+
+        return self
 
     def to_array(self):
         output = []

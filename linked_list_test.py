@@ -226,6 +226,53 @@ class SimpleLinkedListTest(unittest.TestCase):
 
         self.assertEqual(list.to_array(), [5, 10, 'cool', 20])
 
+    def test_insert_at_multiple_elements(self):
+        list = LinkedList()
+
+        list.push(5).push(10).push(20).push(40).push([55, 66, 77])
+        list.insert_at('first', 0).insert_at('second', 3).insert_at('rain', -1)
+
+        self.assertEqual(list.to_array(), ['first', 5, 10, 'second', 20, 40, [55, 66, 77], 'rain'])
+
+    def test_remove_element_at_index(self):
+        list = LinkedList()
+
+        list.push(5).push(10).push(20)
+        list.remove_at(1)
+
+        self.assertEqual(list.to_array(), [5, 20])
+
+    def test_remove_element_at_head(self):
+        list = LinkedList()
+
+        list.push(5).push(10).push(20)
+        list.remove_at(0)
+
+        self.assertEqual(list.to_array(), [10, 20])
+
+    def test_remove_element_at_tail(self):
+        list = LinkedList()
+
+        list.push(5).push(10).push(20)
+        list.remove_at(-1)
+
+        self.assertEqual(list.to_array(), [5, 10])
+
+    def test_remove_element_at_negative_index(self):
+        list = LinkedList()
+
+        list.push(5).push(10).push(20).push(40)
+        list.remove_at(-3)
+
+        self.assertEqual(list.to_array(), [5, 20, 40])
+
+    def test_remove_multiple_elements(self):
+        list = LinkedList()
+
+        list.push(5).push(10).push(20).push(40).push([55, 66, 77])
+        list.remove_at(0).remove_at(1).remove_at(-1)
+
+        self.assertEqual(list.to_array(), [10, 40])
 
 if __name__ == '__main__':
     unittest.main()
